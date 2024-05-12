@@ -16,7 +16,7 @@ public class SpringBootKafkaProducer {
     public KafkaTemplate<String,String> kafkaTemplate;
 
     public void sendMessage(String value){
-        CompletableFuture<SendResult<String,String>> future = kafkaTemplate.send("Spring_Boot_Kafka_Topic_V1",value);
+        CompletableFuture<SendResult<String,String>> future = kafkaTemplate.send("demo1",value);
 
         future.whenComplete((sr, ex) -> System.out.println(future + ": " + sr.getRecordMetadata()));
     }
