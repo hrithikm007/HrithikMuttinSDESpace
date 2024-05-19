@@ -4,6 +4,15 @@ server:
 spring:
   kafka:
     producer:
-      bootstrap-servers: "172.17.22.102:9092"
+      bootstrap-servers: "172.27.164.191:9092"
       key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
-      value-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+      value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
+    consumer:
+      bootstrap-servers: "172.27.164.191:9092"
+      group-id: "spring-boot-kafka-consumer"
+      key-serializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      value-serializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
+
+# This is my custom property declared
+topic:
+  name: "demo1"

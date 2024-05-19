@@ -1,10 +1,9 @@
 package com.confluent.kafkaCode.controller;
 
+import com.confluent.kafkaCode.model.Tutorial;
 import com.confluent.kafkaCode.producer.SpringBootKafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SpringBootKafkaController {
@@ -17,4 +16,11 @@ public class SpringBootKafkaController {
         System.out.println("Inside Send Message Controller");
         springBootKafkaProducer.sendMessage(message);
     }
+
+    @PostMapping(value = "/send")
+    public void sendMessage(@RequestBody Tutorial tutorial){
+        System.out.println("Inside Kafka JSON Producer");
+        springBootKafkaProducer.sendMessage(tutorial);
+    }
+
 }
