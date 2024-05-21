@@ -17,10 +17,10 @@ public class Config {
 
     @Bean
     public ConsumerFactory<String,Tutorial> consumerFactory(KafkaProperties kafkaProperties) {
-//        return new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties(), new StringDeserializer(), new JsonDeserializer<>(Tutorial.class));
-        return new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties());
+        return new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties(), new StringDeserializer(), new JsonDeserializer<>(Tutorial.class));
     }
 
+    @Bean
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String,Tutorial>> kafkaListenerContainerFactory(KafkaProperties kafkaProperties) {
         ConcurrentKafkaListenerContainerFactory<String, Tutorial> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory(kafkaProperties));

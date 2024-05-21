@@ -17,6 +17,9 @@ public class Tutorial {
                 '}';
     }
 
+    public Tutorial() {
+    }
+
     String nameId;
 
     public Tutorial(String name, String publisher, String location, String type, String nameId) {
