@@ -1,0 +1,18 @@
+server:
+  port: 9081
+spring:
+  kafka:
+    bootstrap-servers: "192.168.219.25:9092"
+    producer:
+      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+      value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
+      properties:
+        schema:
+          registry:
+            url: "http://192.168.219.25:8081"
+
+
+avro:
+  topic:
+    name: "demo2"
+
