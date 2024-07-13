@@ -1,15 +1,20 @@
 server:
   port: 9081
+
+my:
+  vm:
+    ip: "172.20.188.82"
+
 spring:
   kafka:
-    bootstrap-servers: "172.20.181.222:9092"
+    bootstrap-servers: "${my.vm.ip}:9092"
     producer:
       key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
       value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
       properties:
         schema:
           registry:
-            url: "http://172.20.181.222:8081"
+            url: "http://${my.vm.ip}:8081"
 
     consumer:
       group-id: "spring-boot-avro-consumer"
@@ -19,7 +24,7 @@ spring:
       properties:
         schema:
           registry:
-            url: "http://172.20.181.222:8081"
+            url: "http://${my.vm.ip}:8081"
         avro:
           specific:
             reader: "true"
@@ -27,5 +32,5 @@ spring:
 
 avro:
   topic:
-    name: "demo2"
+    name: "demo4"
 

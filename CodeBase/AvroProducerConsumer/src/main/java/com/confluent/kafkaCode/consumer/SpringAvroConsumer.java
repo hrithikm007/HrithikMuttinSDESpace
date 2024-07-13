@@ -10,7 +10,7 @@ public class SpringAvroConsumer {
 
     @KafkaListener(topics = "${avro.topic.name}", containerFactory = "kafkaListenerContainerFactory")
     public void listen(ConsumerRecord<String, StockHistory> record) {
-        System.out.println("Key is : "+ record.key());
-        System.out.println("Value is : "+ record.value());
+        System.out.println("Key is : " + record.key());
+        System.out.println("Value is : " + record.value());
     }
 }
