@@ -5,49 +5,21 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "accounts")
 @Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
-public class Accounts extends BaseEntity{
+public class Accounts extends  BaseEntity {
 
-    private Long customer_id;
+    @Column(name="customer_id")
+    private Long customerId;
+//    Snake Case Naming Convention of JPA
+//    
 
-    @Column(name = "account_number")
+    @Column(name="account_number")
     @Id
-    private Long account_number;
+    private Long accountNumber;
 
 
-    private String account_type;
-    private String branch_address;
+    private String accountType;
+    private String branchAddress;
 
-    public Long getAccount_number() {
-        return account_number;
-    }
-
-    public void setAccount_number(Long account_number) {
-        this.account_number = account_number;
-    }
-
-    public Long getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(Long customer_id) {
-        this.customer_id = customer_id;
-    }
-
-    public String getAccount_type() {
-        return account_type;
-    }
-
-    public void setAccount_type(String account_type) {
-        this.account_type = account_type;
-    }
-
-    public String getBranch_address() {
-        return branch_address;
-    }
-
-    public void setBranch_address(String branch_address) {
-        this.branch_address = branch_address;
-    }
 }

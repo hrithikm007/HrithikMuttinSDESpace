@@ -10,6 +10,7 @@ import com.eazybytes.accounts.repository.AccountsRepository;
 import com.eazybytes.accounts.repository.CustomerRepository;
 import com.eazybytes.accounts.service.IAccountsService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,7 +19,9 @@ import java.util.Random;
 @Service
 public class AccountsServiceImpl implements IAccountsService {
 
+    @Autowired
     private AccountsRepository accountsRepository;
+    @Autowired
     private CustomerRepository customerRepository;
 
     /**
@@ -38,18 +41,18 @@ public class AccountsServiceImpl implements IAccountsService {
             throw new CustomerAlreadyExistsException("Customer Already Exists with the given number"+ customerDto.getMobileNumber());
         }
         Customer savedCustomer = customerRepository.save(customer);
-        accountsRepository.save(createNewAccount(savedCustomer));
+//        accountsRepository.save(createNewAccount(savedCustomer));
         
     }
 
     private Accounts createNewAccount(Customer customer) {
         Accounts newAccount = new Accounts();
-        newAccount.setCustomer_id(customer.getCustomer_id());
+        newAccount.setCustomerId(customer.getCustomer_id());
         long randomAccNumber = 1000000000L + new Random().nextInt(900000000);
 
-        newAccount.setAccount_number(randomAccNumber);
-        newAccount.setAccount_type(AccountsConstants.SAVINGS);
-        newAccount.setBranch_address(AccountsConstants.ADDRESS);
+        newAccount.setAccountNumber(randomAccNumber);
+        newAccount.setAccountType(AccountsConstants.SAVINGS);
+        newAccount.setBranchAddress(AccountsConstants.ADDRESS);
         return newAccount;
 
     }

@@ -6,23 +6,26 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+// This class will act as superclass to all entities extending it
 @MappedSuperclass
 @Getter @Setter @ToString
 public class BaseEntity {
 
 //    Column name of the DB we are mapping
     @Column(name = "created_at", updatable = false)
-    private LocalDate created_at;
+    private LocalDateTime createdAt;
 
+
+//    created_by column of db in java model maps to createdBy
     @Column(updatable = false)
-    private String created_by;
+    private String createdBy;
 
     @Column(insertable = false)
-    private LocalDate updated_at;
+    private LocalDateTime updatedAt;
 
     @Column(insertable = false)
-    private String updated_by;
+    private String updatedBy;
 
 }
