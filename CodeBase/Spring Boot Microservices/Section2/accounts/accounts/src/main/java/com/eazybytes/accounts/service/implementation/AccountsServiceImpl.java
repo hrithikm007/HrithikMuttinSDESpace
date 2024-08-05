@@ -32,6 +32,7 @@ public class AccountsServiceImpl implements IAccountsService {
      */
     public AccountsServiceImpl(AccountsRepository accountsRepository, CustomerRepository customerRepository) {}
 
+
     @Override
     public void createAccount(CustomerDto customerDto) {
         Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
@@ -41,7 +42,7 @@ public class AccountsServiceImpl implements IAccountsService {
             throw new CustomerAlreadyExistsException("Customer Already Exists with the given number"+ customerDto.getMobileNumber());
         }
         Customer savedCustomer = customerRepository.save(customer);
-//        accountsRepository.save(createNewAccount(savedCustomer));
+        accountsRepository.save(createNewAccount(savedCustomer));
         
     }
 

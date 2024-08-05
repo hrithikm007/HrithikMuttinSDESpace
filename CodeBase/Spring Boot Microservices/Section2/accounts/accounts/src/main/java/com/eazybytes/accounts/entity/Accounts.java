@@ -12,7 +12,6 @@ public class Accounts extends  BaseEntity {
     @Column(name="customer_id")
     private Long customerId;
 //    Snake Case Naming Convention of JPA
-//    
 
     @Column(name="account_number")
     @Id
