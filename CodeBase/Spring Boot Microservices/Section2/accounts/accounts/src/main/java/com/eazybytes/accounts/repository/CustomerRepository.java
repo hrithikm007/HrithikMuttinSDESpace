@@ -11,4 +11,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 //todo    Derived Name method, because based on Name Spring JPA is querying the DB
     Optional<Customer> findByMobileNumber(String mobileNumber);
+
+    Optional<Customer> findByEmailAndMobileNumber(String email, String mobileNumber);
 }

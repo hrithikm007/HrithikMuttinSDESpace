@@ -16,22 +16,19 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.Random;
 
+/**
+ * When we have only 1 constructor having all the params of the class
+ * Spring will automatically Autowire them, and we don't need to do explicitly.
+ * use @AllArgsConstructor to have single all params constructor
+ * @param accountsRepository
+ * @param customerRepository
+ */
 @Service
+@AllArgsConstructor
 public class AccountsServiceImpl implements IAccountsService {
 
-    @Autowired
     private AccountsRepository accountsRepository;
-    @Autowired
     private CustomerRepository customerRepository;
-
-    /**
-     * When we have only 1 constructor having all the params of the class
-     * Spring will automatically Autowire them, and we don't need to do explicitly
-     * @param accountsRepository
-     * @param customerRepository
-     */
-    public AccountsServiceImpl(AccountsRepository accountsRepository, CustomerRepository customerRepository) {}
-
 
     @Override
     public void createAccount(CustomerDto customerDto) {

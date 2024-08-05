@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-//! Whenever API Controller will receive
+//! Whenever any exceptions occur on any of our controller, we will invoke methods of this class
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
